@@ -25,7 +25,6 @@
               | list
             }}
           labels:
-            # job: rpi
             env: pi-cluster
 
         - targets: >-
@@ -37,30 +36,4 @@
               | list
             }}
           labels:
-            # job: node
             env: pi-cluster
-  # vars:
-  #   prometheus_targets:
-  #     node:
-  #       - targets: >-
-  #           {{
-  #             groups['all']
-  #             | map('extract', hostvars)
-  #             | map(attribute='inventory_hostname')
-  #             | map('regex_replace', '$', ':9100')
-  #             | list
-  #           }}
-  #         labels:
-  #           env: all
-
-  #       - targets: >-
-  #           {{
-  #             groups['rpi']
-  #             | map('extract', hostvars)
-  #             | map(attribute='inventory_hostname')
-  #             | map('regex_replace', '$', ':9243')
-  #             | list
-  #           }}
-  #         labels:
-  #           job: node
-  #           env: pi-cluster
