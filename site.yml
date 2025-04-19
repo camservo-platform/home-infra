@@ -1,4 +1,6 @@
 ---
+## TODO: RPI and Node exporters need to be locked down with auth.
+## TODO: Accidentally deleted grafana installation.  Add that back in.
 - name: Common
   hosts: all
   roles:
