@@ -2,13 +2,4 @@
 ---
 # vars file for monitor
 node_exporter_port: 9100
-# prometheus_targets:
-#   node:
-#     - targets: >-
-#         {{
-#           groups['all']
-#           | map('regex_replace', '(.*)', '\\1:' ~ node_exporter_port)
-#           | list
-#         }}
-#       labels:
-#         env: pi-cluster
+rpi_exporter_port: 9243
