@@ -1,0 +1,17 @@
+---
+all:
+  hosts:
+    pi-cluster-01:
+      ansible_host: pi-cluster-01.local
+    pi-cluster-02:
+      ansible_host: pi-cluster-02.local
+  children:
+    raspberry_pi:
+      hosts:
+        pi-cluster-01: {}
+        pi-cluster-02: {}
+    monitoring_servers:
+      hosts:
+        pi-cluster-01: {}
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

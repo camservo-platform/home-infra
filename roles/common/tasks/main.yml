@@ -1,0 +1,16 @@
+---
+- name: "Install packages"
+  become: yes
+  apt:
+    update_cache: yes
+    pkg:
+      - git
+      - vim
+      - zsh
+      - python3-cryptography
+
+- name: "Update and upgrade apt packages"
+  become: yes
+  apt:
+    upgrade: yes
+    cache_valid_time: 86400

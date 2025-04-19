@@ -1,0 +1,22 @@
+---
+- name: Common
+  hosts: all
+  roles:
+    - common
+
+- name: Node Exporter Setup
+  hosts: all
+  roles:
+    - prometheus.prometheus.node_exporter
+
+- hosts: monitoring_servers
+  roles:
+    - prometheus.prometheus.prometheus
+  vars:
+    prometheus_targets:
+      node:
+        - targets:
+            - localhost:9100
+            - pi-cluster-02.local:9100
+          labels:
+            env: pi-cluster
