@@ -7,7 +7,6 @@
       - git
       - vim
       - zsh
-      - python3-cryptography
 
 - name: "Update and upgrade apt packages"
   become: yes
