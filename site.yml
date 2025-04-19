@@ -3,20 +3,21 @@
   hosts: all
   roles:
     - common
-
-- name: Node Exporter Setup
-  hosts: all
-  roles:
     - prometheus.prometheus.node_exporter
 
-- hosts: monitoring_servers
+- hosts: monitors
   roles:
-    - prometheus.prometheus.prometheus
+    - monitor
   vars:
     prometheus_targets:
       node:
-        - targets:
-            - localhost:9100
-            - pi-cluster-02.local:9100
+        - targets: >-
+            {{
+              groups['all']
+              | map('extract', hostvars)
+              | map(attribute='inventory_hostname')
+              | map('regex_replace', '$', ':9100')
+              | list
+            }}
           labels:
             env: pi-cluster
